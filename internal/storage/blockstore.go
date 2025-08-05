@@ -10,7 +10,7 @@ type BlockStore struct {
 	db *badger.DB
 }
 
-func New(path string) (*BlockStore, error) {
+func NewBlockStore(path string) (*BlockStore, error) {
 	opts := badger.DefaultOptions(path)
 	db, err := badger.Open(opts)
 

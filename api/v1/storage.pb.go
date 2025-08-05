@@ -4,15 +4,14 @@
 // 	protoc        v6.31.1
 // source: api/v1/storage.proto
 
-package storage
+package v1
 
 import (
+	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
+	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
 	sync "sync"
 	unsafe "unsafe"
-
-	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
-	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 )
 
 const (
@@ -120,7 +119,7 @@ const file_api_v1_storage_proto_rawDesc = "" +
 	"\x04data\x18\x01 \x01(\fR\x04data\")\n" +
 	"\bManifest\x12\x1d\n" +
 	"\n" +
-	"block_cids\x18\x01 \x03(\tR\tblockCidsB/Z-github.com/Yashh56/p2p-storage/api/v1;storageb\x06proto3"
+	"block_cids\x18\x01 \x03(\tR\tblockCidsB'Z%github.com/Yashh56/p2p-storage/api/v1b\x06proto3"
 
 var (
 	file_api_v1_storage_proto_rawDescOnce sync.Once

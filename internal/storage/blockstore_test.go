@@ -7,7 +7,7 @@ import (
 
 func TestBlockStore_PutGetHas(t *testing.T) {
 	_ = os.RemoveAll("./tmpdb")
-	store, err := New("./tmpdb")
+	store, err := NewBlockStore("./tmpdb")
 	if err != nil {
 		t.Fatal(err)
 	}
