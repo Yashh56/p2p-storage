@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package storage.v1;
+
+option go_package = "github.com/Yashh56/p2p-storage/api/v1;storage";
+
+message Block {
+    bytes data = 1;
+}
+
+message Manifest {
+    repeated string block_cids = 1;
+}
