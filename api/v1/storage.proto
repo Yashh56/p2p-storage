@@ -8,6 +8,27 @@ message Block {
     bytes data = 1;
 }
 
+message AddFileRequest {
+    bytes chunk_data = 1;
+}
+
+message AddFileResponse {
+    string root_cid = 1;
+}
+
+message GetFileRequest {
+    string cid = 1;
+}
+message GetFileResponse {
+    bytes chunk_data = 1;
+}
+
+service StorageService{
+    rpc AddFile(stream AddFileRequest) returns (AddFileResponse);
+
+    rpc GetFile(GetFileRequest) returns (stream GetFileResponse);
+}
+
 message Manifest {
     repeated string block_cids = 1;
 }

@@ -65,6 +65,182 @@ func (x *Block) GetData() []byte {
 	return nil
 }
 
+type AddFileRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ChunkData     []byte                 `protobuf:"bytes,1,opt,name=chunk_data,json=chunkData,proto3" json:"chunk_data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddFileRequest) Reset() {
+	*x = AddFileRequest{}
+	mi := &file_api_v1_storage_proto_msgTypes[1]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddFileRequest) ProtoMessage() {}
+
+func (x *AddFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_storage_proto_msgTypes[1]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddFileRequest.ProtoReflect.Descriptor instead.
+func (*AddFileRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_storage_proto_rawDescGZIP(), []int{1}
+}
+
+func (x *AddFileRequest) GetChunkData() []byte {
+	if x != nil {
+		return x.ChunkData
+	}
+	return nil
+}
+
+type AddFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	RootCid       string                 `protobuf:"bytes,1,opt,name=root_cid,json=rootCid,proto3" json:"root_cid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *AddFileResponse) Reset() {
+	*x = AddFileResponse{}
+	mi := &file_api_v1_storage_proto_msgTypes[2]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *AddFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*AddFileResponse) ProtoMessage() {}
+
+func (x *AddFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_storage_proto_msgTypes[2]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use AddFileResponse.ProtoReflect.Descriptor instead.
+func (*AddFileResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_storage_proto_rawDescGZIP(), []int{2}
+}
+
+func (x *AddFileResponse) GetRootCid() string {
+	if x != nil {
+		return x.RootCid
+	}
+	return ""
+}
+
+type GetFileRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Cid           string                 `protobuf:"bytes,1,opt,name=cid,proto3" json:"cid,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetFileRequest) Reset() {
+	*x = GetFileRequest{}
+	mi := &file_api_v1_storage_proto_msgTypes[3]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetFileRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFileRequest) ProtoMessage() {}
+
+func (x *GetFileRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_storage_proto_msgTypes[3]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFileRequest.ProtoReflect.Descriptor instead.
+func (*GetFileRequest) Descriptor() ([]byte, []int) {
+	return file_api_v1_storage_proto_rawDescGZIP(), []int{3}
+}
+
+func (x *GetFileRequest) GetCid() string {
+	if x != nil {
+		return x.Cid
+	}
+	return ""
+}
+
+type GetFileResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	ChunkData     []byte                 `protobuf:"bytes,1,opt,name=chunk_data,json=chunkData,proto3" json:"chunk_data,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *GetFileResponse) Reset() {
+	*x = GetFileResponse{}
+	mi := &file_api_v1_storage_proto_msgTypes[4]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *GetFileResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*GetFileResponse) ProtoMessage() {}
+
+func (x *GetFileResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_api_v1_storage_proto_msgTypes[4]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use GetFileResponse.ProtoReflect.Descriptor instead.
+func (*GetFileResponse) Descriptor() ([]byte, []int) {
+	return file_api_v1_storage_proto_rawDescGZIP(), []int{4}
+}
+
+func (x *GetFileResponse) GetChunkData() []byte {
+	if x != nil {
+		return x.ChunkData
+	}
+	return nil
+}
+
 type Manifest struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
 	BlockCids     []string               `protobuf:"bytes,1,rep,name=block_cids,json=blockCids,proto3" json:"block_cids,omitempty"`
@@ -74,7 +250,7 @@ type Manifest struct {
 
 func (x *Manifest) Reset() {
 	*x = Manifest{}
-	mi := &file_api_v1_storage_proto_msgTypes[1]
+	mi := &file_api_v1_storage_proto_msgTypes[5]
 	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 	ms.StoreMessageInfo(mi)
 }
@@ -86,7 +262,7 @@ func (x *Manifest) String() string {
 func (*Manifest) ProtoMessage() {}
 
 func (x *Manifest) ProtoReflect() protoreflect.Message {
-	mi := &file_api_v1_storage_proto_msgTypes[1]
+	mi := &file_api_v1_storage_proto_msgTypes[5]
 	if x != nil {
 		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
 		if ms.LoadMessageInfo() == nil {
@@ -99,7 +275,7 @@ func (x *Manifest) ProtoReflect() protoreflect.Message {
 
 // Deprecated: Use Manifest.ProtoReflect.Descriptor instead.
 func (*Manifest) Descriptor() ([]byte, []int) {
-	return file_api_v1_storage_proto_rawDescGZIP(), []int{1}
+	return file_api_v1_storage_proto_rawDescGZIP(), []int{5}
 }
 
 func (x *Manifest) GetBlockCids() []string {
@@ -116,10 +292,23 @@ const file_api_v1_storage_proto_rawDesc = "" +
 	"\x14api/v1/storage.proto\x12\n" +
 	"storage.v1\"\x1b\n" +
 	"\x05Block\x12\x12\n" +
-	"\x04data\x18\x01 \x01(\fR\x04data\")\n" +
+	"\x04data\x18\x01 \x01(\fR\x04data\"/\n" +
+	"\x0eAddFileRequest\x12\x1d\n" +
+	"\n" +
+	"chunk_data\x18\x01 \x01(\fR\tchunkData\",\n" +
+	"\x0fAddFileResponse\x12\x19\n" +
+	"\broot_cid\x18\x01 \x01(\tR\arootCid\"\"\n" +
+	"\x0eGetFileRequest\x12\x10\n" +
+	"\x03cid\x18\x01 \x01(\tR\x03cid\"0\n" +
+	"\x0fGetFileResponse\x12\x1d\n" +
+	"\n" +
+	"chunk_data\x18\x01 \x01(\fR\tchunkData\")\n" +
 	"\bManifest\x12\x1d\n" +
 	"\n" +
-	"block_cids\x18\x01 \x03(\tR\tblockCidsB'Z%github.com/Yashh56/p2p-storage/api/v1b\x06proto3"
+	"block_cids\x18\x01 \x03(\tR\tblockCids2\x9c\x01\n" +
+	"\x0eStorageService\x12D\n" +
+	"\aAddFile\x12\x1a.storage.v1.AddFileRequest\x1a\x1b.storage.v1.AddFileResponse(\x01\x12D\n" +
+	"\aGetFile\x12\x1a.storage.v1.GetFileRequest\x1a\x1b.storage.v1.GetFileResponse0\x01B'Z%github.com/Yashh56/p2p-storage/api/v1b\x06proto3"
 
 var (
 	file_api_v1_storage_proto_rawDescOnce sync.Once
@@ -133,14 +322,22 @@ func file_api_v1_storage_proto_rawDescGZIP() []byte {
 	return file_api_v1_storage_proto_rawDescData
 }
 
-var file_api_v1_storage_proto_msgTypes = make([]protoimpl.MessageInfo, 2)
+var file_api_v1_storage_proto_msgTypes = make([]protoimpl.MessageInfo, 6)
 var file_api_v1_storage_proto_goTypes = []any{
-	(*Block)(nil),    // 0: storage.v1.Block
-	(*Manifest)(nil), // 1: storage.v1.Manifest
+	(*Block)(nil),           // 0: storage.v1.Block
+	(*AddFileRequest)(nil),  // 1: storage.v1.AddFileRequest
+	(*AddFileResponse)(nil), // 2: storage.v1.AddFileResponse
+	(*GetFileRequest)(nil),  // 3: storage.v1.GetFileRequest
+	(*GetFileResponse)(nil), // 4: storage.v1.GetFileResponse
+	(*Manifest)(nil),        // 5: storage.v1.Manifest
 }
 var file_api_v1_storage_proto_depIdxs = []int32{
-	0, // [0:0] is the sub-list for method output_type
-	0, // [0:0] is the sub-list for method input_type
+	1, // 0: storage.v1.StorageService.AddFile:input_type -> storage.v1.AddFileRequest
+	3, // 1: storage.v1.StorageService.GetFile:input_type -> storage.v1.GetFileRequest
+	2, // 2: storage.v1.StorageService.AddFile:output_type -> storage.v1.AddFileResponse
+	4, // 3: storage.v1.StorageService.GetFile:output_type -> storage.v1.GetFileResponse
+	2, // [2:4] is the sub-list for method output_type
+	0, // [0:2] is the sub-list for method input_type
 	0, // [0:0] is the sub-list for extension type_name
 	0, // [0:0] is the sub-list for extension extendee
 	0, // [0:0] is the sub-list for field type_name
@@ -157,9 +354,9 @@ func file_api_v1_storage_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_api_v1_storage_proto_rawDesc), len(file_api_v1_storage_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   2,
+			NumMessages:   6,
 			NumExtensions: 0,
-			NumServices:   0,
+			NumServices:   1,
 		},
 		GoTypes:           file_api_v1_storage_proto_goTypes,
 		DependencyIndexes: file_api_v1_storage_proto_depIdxs,
