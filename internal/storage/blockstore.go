@@ -4,6 +4,7 @@ import (
 	"log"
 
 	"github.com/dgraph-io/badger/v4"
+	"github.com/ipfs/go-cid"
 )
 
 type BlockStore struct {
@@ -22,17 +23,22 @@ func NewBlockStore(path string) (*BlockStore, error) {
 	}, nil
 }
 
-func (bs *BlockStore) Put(data []byte) (string, error) {
-	cid := Hash(data)
-	return cid, bs.db.Update(func(txn *badger.Txn) error {
-		return txn.Set([]byte(cid), data)
+func (bs *BlockStore) Put(data []byte) (cid.Cid, error) {
+	c, err := Sum(data)
+	if err != nil {
+		return cid.Undef, err
+	}
+	key := []byte(c.KeyString())
+	return c, bs.db.Update(func(txn *badger.Txn) error {
+		return txn.Set(key, data)
 	})
 }
 
-func (bs *BlockStore) Get(cid string) ([]byte, error) {
+func (bs *BlockStore) Get(c cid.Cid) ([]byte, error) {
 	var blockData []byte
+	key := []byte(c.KeyString())
 	err := bs.db.View(func(txn *badger.Txn) error {
-		item, err := txn.Get([]byte(cid))
+		item, err := txn.Get([]byte(key))
 		if err != nil {
 			return err
 		}
@@ -44,9 +50,10 @@ func (bs *BlockStore) Get(cid string) ([]byte, error) {
 	return blockData, err
 }
 
-func (bs *BlockStore) Has(cid string) (bool, error) {
+func (bs *BlockStore) Has(c cid.Cid) (bool, error) {
+	key := []byte(c.KeyString())
 	err := bs.db.View(func(txn *badger.Txn) error {
-		_, err := txn.Get([]byte(cid))
+		_, err := txn.Get([]byte(key))
 		return err
 	})
 	return err == nil, err

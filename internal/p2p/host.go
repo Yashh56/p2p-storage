@@ -3,12 +3,11 @@ package p2p
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/libp2p/go-libp2p"
 	dht "github.com/libp2p/go-libp2p-kad-dht"
 	"github.com/libp2p/go-libp2p/core/host"
-	"github.com/libp2p/go-libp2p/p2p/discovery/routing"
-	dutil "github.com/libp2p/go-libp2p/p2p/discovery/util"
 )
 
 func NewHost(ctx context.Context) (host.Host, error) {
@@ -26,17 +25,19 @@ func NewHost(ctx context.Context) (host.Host, error) {
 }
 
 func InitDHT(ctx context.Context, h host.Host) (*dht.IpfsDHT, error) {
-	dht, err := dht.New(ctx, h)
+	dht, err := dht.New(ctx, h, dht.Mode(dht.ModeServer))
 	if err != nil {
 		return nil, err
 	}
+	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	defer cancel()
 
 	if err = dht.Bootstrap(ctx); err != nil {
 		return nil, err
 	}
 
-	routingDiscovery := routing.NewRoutingDiscovery(dht)
-	dutil.Advertise(ctx, routingDiscovery, "p2p-storage-new")
+	// routingDiscovery := routing.NewRoutingDiscovery(dht)
+	// dutil.Advertise(ctx, routingDiscovery, "p2p-storage-network")
 
 	fmt.Println("Successfully bootstrapped DHT!!")
 
