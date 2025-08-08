@@ -67,7 +67,7 @@ The system consists of a server node that participates in the P2P network and a 
 Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/p2p-storage.git
+git clone https://github.com/Yashh56/p2p-storage.git
 cd p2p-storage
 ```
 
